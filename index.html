@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1
+            </div>
+            <div class="swiper-slide">
+                <div>⇦向左滑</div>
+                <div>向右滑⇨</div>
+
+            </div>
+            <div class="swiper-slide disabled">Slide 3</div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+
+        const swiper = new Swiper('.mySwiper', {
+            initialSlide: 1,
+        })
+
+        swiper.on('slideChange', function () {
+            if (swiper.activeIndex == 0) {
+                swiper.allowSlidePrev = false;
+            } else if (swiper.activeIndex == 2) {
+                swiper.allowSlideNext = false;
+            } else {
+                swiper.allowSlideNext = true;
+                swiper.allowSlidePrev = true;
+            }
+
+            console.log('allowSlideNext:'+swiper.allowSlideNext)
+            console.log('allowSlidePrev:'+swiper.allowSlidePrev)
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
